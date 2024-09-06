@@ -5,6 +5,7 @@ pkgs.mkShell {
     pkgs.meson
     pkgs.clang-tools
     pkgs.llvmPackages.libcxxClang
+    pkgs.ninja 
   ];
 }
 
