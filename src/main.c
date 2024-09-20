@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "common.h"
-
+#include "include/common.h"
 int main(int argc, const char* argv[]){
   if(argc == 1)
  	 printf("Welcome to the Noodle compiler!\n");
