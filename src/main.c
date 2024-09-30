@@ -15,6 +15,7 @@ int main(int argc, const char* argv[]){
 			//runFile(argv[1]);
 			// what we have for now
 			printf("[noodle:Ok]	Valid File: %s\n", argv[1]);
+			printf("%s\n", readFile(argv[1]));
 		}
 		else
 		{
