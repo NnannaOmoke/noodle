@@ -25,3 +25,23 @@ int validate_extension(const char str[])
     return 0;
 }
 
+char* readFile(const char* path)
+{
+    FILE* file = fopen(path, "rb");
+
+    // seek the full size to decide what memory to allocate
+    fseek(file, 0L, SEEK_END);
+    size_t fileSize = ftell(file);
+    rewind(file);
+
+    // actually read the file
+    char* buffer = (char*)malloc(fileSize + 1);
+    size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
+
+
+    // put the null terminator and return the buffer
+    buffer[bytesRead] = '\0';
+
+    fclose(file);
+    return buffer;
+}
