@@ -10,6 +10,7 @@ int main(int argc, const char* argv[]){
 	else if(argc == 2)
 	{
 
+		// TODO: check if strstr() func is faster
 		if(validate_extension(argv[1]))
 		{
 			//runFile(argv[1]);
