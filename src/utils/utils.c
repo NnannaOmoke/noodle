@@ -35,7 +35,7 @@ char* readFile(const char* path)
     rewind(file);
 
     // actually read the file
-    char* buffer = (char*)malloc(fileSize + 1);
+    char* buffer = malloc(fileSize + 1);
     size_t bytesRead = fread(buffer, sizeof(char), fileSize, file);
 
 
