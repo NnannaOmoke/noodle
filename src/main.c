@@ -1,18 +1,35 @@
 #include <stdio.h>
-//#include "include/common.h"
+#include <stdlib.h>
+#include "include/common.h"
 #include "utils/utils.h"
 
-
 int main(int argc, const char* argv[]){
-  if(argc == 1)
- 	 printf("Welcome to the Noodle compiler!\n");
-  fflush(stdout);
- //  else{
-	// // please check this
-	// fprintf(stderr,"Usage: noodle has no implementation yet ;\n");
- //  }
-  printf("We got here in main!"); 
-  test_with_builtin();
-  
-  return 0;
+	if(argc == 1)
+		printf("Welcome to the Noodle compiler!\n");
+	
+	else if(argc == 2)
+	{
+
+		// TODO: check if strstr() func is faster
+		if(validate_extension(argv[1]))
+		{
+			//runFile(argv[1]);
+			// what we have for now
+			printf("[noodle:Ok]	Valid File: %s\n", argv[1]);
+			printf("%s\n", readFile(argv[1]));
+		}
+		else
+		{
+			fprintf(stderr, "[noodle:Error] Invalid File: %s \n", argv[1]);
+			exit(USAGE_ERROR);
+		}
+		
+	}
+	
+	else{
+		fprintf(stderr, "[noodle: Error] Usage: noodle <path>\n");
+		exit(USAGE_ERROR);
+	}
+	return 0;
+>>>>>>> origin/master
 }

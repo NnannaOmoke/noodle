@@ -1,0 +1,7 @@
+fn main = {
+    var myage:int16 = 17;
+    print(f"{myage}\n");
+    print("Hello World!\n");
+}
+
+main();
