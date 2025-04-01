@@ -6,6 +6,7 @@ pkgs.mkShell {
     pkgs.clang-tools
     pkgs.llvmPackages.libcxxClang
     pkgs.ninja 
+    pkgs.gdb
   ];
 }
 
