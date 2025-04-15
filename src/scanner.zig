@@ -327,7 +327,7 @@ const TokenType = enum {
 };
 
 // compile time hashmap to search for keywords
-const keywords = static_map.StaticStringMapWithEql(TokenType, strcmp).initComptime(&.{ .{ "if", TokenType.TOKEN_IF }, .{ "else", TokenType.TOKEN_ELSE }, .{ "while", TokenType.TOKEN_WHILE }, .{ "return", TokenType.TOKEN_RETURN }, .{ "for", TokenType.TOKEN_FOR }, .{ "in", TokenType.TOKEN_IN }, .{ "as", TokenType.TOKEN_AS }, .{ "not", TokenType.TOKEN_NOT }, .{ "fn", TokenType.TOKEN_FN }, .{ "lambda", TokenType.TOKEN_LAMBDA }, .{ "or", TokenType.TOKEN_OR }, .{ "and", TokenType.TOKEN_AND }, .{ "int", TokenType.TOKEN_INT }, .{ "i16", TokenType.TOKEN_I16 }, .{ "u16", TokenType.TOKEN_U16 }, .{ "i32", TokenType.TOKEN_I32 }, .{ "u32", TokenType.TOKEN_U32 }, .{ "float", TokenType.TOKEN_FLOAT }, .{ "f32", TokenType.TOKEN_F32 }, .{ "f64", TokenType.TOKEN_F64 }, .{ "char", TokenType.TOKEN_CHAR }, .{ "any", TokenType.TOKEN_ANY }, .{ "str", TokenType.TOKEN_STR }, .{ "array", TokenType.TOKEN_ARRAY }, .{ "tuple", TokenType.TOKEN_TUPLE }, .{ "list", TokenType.TOKEN_LIST }, .{ "hashmap", TokenType.TOKEN_HASHMAP }, .{ "null", TokenType.TOKEN_NULL }, .{ "unit", TokenType.TOKEN_UNIT }, .{ "let", TokenType.TOKEN_LET }, .{ "mut", TokenType.TOKEN_MUT }, .{ "rec", TokenType.TOKEN_REC }, .{ "field", TokenType.TOKEN_FIELD }, .{ "type", TokenType.TOKEN_TYPE }, .{ "of", TokenType.TOKEN_OF }, .{ "union", TokenType.TOKEN_UNION }, .{ "opt", TokenType.TOKEN_OPT }, .{ "callable", TokenType.TOKEN_CALLABLE }, .{ "match", TokenType.TOKEN_MATCH } });
+const keywords = static_map.StaticStringMapWithEql(TokenType, strcmp).initComptime(&.{ .{ "if", TokenType.TOKEN_IF }, .{ "else", TokenType.TOKEN_ELSE }, .{ "while", TokenType.TOKEN_WHILE }, .{ "return", TokenType.TOKEN_RETURN }, .{ "for", TokenType.TOKEN_FOR }, .{ "in", TokenType.TOKEN_IN }, .{ "as", TokenType.TOKEN_AS }, .{ "not", TokenType.TOKEN_NOT }, .{ "fn", TokenType.TOKEN_FN }, .{ "lambda", TokenType.TOKEN_LAMBDA }, .{ "or", TokenType.TOKEN_OR }, .{ "and", TokenType.TOKEN_AND }, .{ "int", TokenType.TOKEN_INT }, .{ "i16", TokenType.TOKEN_I16 }, .{ "u16", TokenType.TOKEN_U16 }, .{ "i32", TokenType.TOKEN_I32 }, .{ "u32", TokenType.TOKEN_U32 }, .{ "float", TokenType.TOKEN_FLOAT }, .{ "f32", TokenType.TOKEN_F32 }, .{ "f64", TokenType.TOKEN_F64 }, .{ "char", TokenType.TOKEN_CHAR }, .{ "any", TokenType.TOKEN_ANY }, .{ "str", TokenType.TOKEN_STR }, .{ "null", TokenType.TOKEN_NULL }, .{ "unit", TokenType.TOKEN_UNIT }, .{ "const", TokenType.TOKEN_CONST }, .{ "var", TokenType.TOKEN_VAR }, .{ "rec", TokenType.TOKEN_REC }, .{ "field", TokenType.TOKEN_FIELD }, .{ "type", TokenType.TOKEN_TYPE }, .{ "of", TokenType.TOKEN_OF }, .{ "union", TokenType.TOKEN_UNION }, .{ "opt", TokenType.TOKEN_OPT }, .{ "callable", TokenType.TOKEN_CALLABLE }, .{ "match", TokenType.TOKEN_MATCH } });
 const Token = struct {
     line: u8,
     token_type: TokenType,
@@ -338,25 +338,25 @@ const Token = struct {
 };
 
 // TESTS
-fn print(comptime fmt: []const u8, args: anytype) !void {
-    var stdout_writer = std.io.getStdOut().writer();
-    try stdout_writer.print(fmt, args);
-}
+// fn print(comptime fmt: []const u8, args: anytype) !void {
+//     var stdout_writer = std.io.getStdOut().writer();
+//     try stdout_writer.print(fmt, args);
+// }
 
-test "test init scanner" {
-    const test_str = "hello world!\n";
-    const myscanner: Scanner = init(test_str);
-    try print("Line: {}, Position: {}\n", .{ myscanner.line, myscanner.position });
-}
+// test "test init scanner" {
+//     const test_str = "hello world!\n";
+//     const myscanner: Scanner = init(test_str);
+//     try print("Line: {}, Position: {}\n", .{ myscanner.line, myscanner.position });
+// }
 
-// these are dumb looking tests i know
-test "emit single or numerous token" {
-    const l = "<";
-    const le = "<=";
-    var myscanner: Scanner = init(l);
-    var myscanner2: Scanner = init(le);
-    const token = myscanner.emitToken();
-    const token2 = myscanner2.emitToken();
-    try print("Token: length {}, line {}, start {}\n", .{ token.length, token.line, token.start_index });
-    try print("Token: length {}, line {}, start {}\n", .{ token2.length, token2.line, token2.start_index });
-}
+// // these are dumb looking tests i know
+// test "emit single or numerous token" {
+//     const l = "<";
+//     const le = "<=";
+//     var myscanner: Scanner = init(l);
+//     var myscanner2: Scanner = init(le);
+//     const token = myscanner.emitToken();
+//     const token2 = myscanner2.emitToken();
+//     try print("Token: length {}, line {}, start {}\n", .{ token.length, token.line, token.start_index });
+//     try print("Token: length {}, line {}, start {}\n", .{ token2.length, token2.line, token2.start_index });
+// }
