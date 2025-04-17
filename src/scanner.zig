@@ -28,7 +28,7 @@ fn advance(self: *Scanner) void {
     self.position += 1;
 }
 
-fn peek(self: *Scanner) u8 {
+fn peek(self: *Scanner) u32 {
     return self.position + 1;
 }
 
@@ -38,12 +38,12 @@ fn canPeekNext(self: *Scanner) bool {
 
 fn match(self: *Scanner, char: u8) bool {
     // return self.source_text[self.position] == char;
-    if (self.canPeekNext()) {
-        if (self.source_text[self.peek()] == char) {
-            self.advance();
-            return true;
-        }
+
+    if (self.source_text[self.peek()] == char) {
+        self.advance();
+        return true;
     }
+
     return false;
 }
 
